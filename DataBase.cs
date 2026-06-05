@@ -4,7 +4,7 @@ namespace CrudMariaDB;
 
 public class AppDbContext : DbContext
 {
-    private readonly string _connectionString;
+    private readonly string? _connectionString;
 
     public AppDbContext()
     {
@@ -20,8 +20,6 @@ public class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
-
-        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+        options.UseMySql(_connectionString, ServerVersion.AutoDetect(_connectionString));
     }
 }
