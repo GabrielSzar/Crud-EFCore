@@ -16,7 +16,6 @@ class Program
         db.Produtos.Add(new Produto { Nome = "Teclado", Preco = 150.00, Categoria = "Periférico" });
         await db.SaveChangesAsync();
 
-        // Consultar com LINQ
         var baratos = db.Produtos
             .Where(p => p.Preco < 200)
             .OrderBy(p => p.Nome);
