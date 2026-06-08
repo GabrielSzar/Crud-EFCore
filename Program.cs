@@ -16,6 +16,7 @@ class Program
         var servicos = new ProdutoService();
         while (true)
         {
+            Thread.Sleep(1000);
             string[] options = { "Adicionar no Banco", "Alterar Produto", "Remover produto" };
             var selected = UI.Select(options, servicos.ListarTodos());
 
