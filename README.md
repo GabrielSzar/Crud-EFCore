@@ -35,8 +35,6 @@ Após instalar, acesse o console do banco:
  
 ```bash
 mysql -u root -p
-# ou para MariaDB:
-mariadb -u root -p
 ```
  
 E execute:
