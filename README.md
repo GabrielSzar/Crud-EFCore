@@ -10,6 +10,7 @@
 1. Baixe o MySQL Installer em [dev.mysql.com/downloads/installer](https://dev.mysql.com/downloads/installer/)
 2. Escolha a opção **MySQL Server** e siga o assistente
 3. Defina uma senha para o `root` e finalize
+---
 **Linux (Ubuntu/Debian)**
  
 ```bash
