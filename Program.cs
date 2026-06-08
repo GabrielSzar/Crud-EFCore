@@ -16,30 +16,18 @@ class Program
         var servicos = new ProdutoService();
         while (true)
         {
-            Console.Clear();
-            Console.WriteLine(UI.CentralizarTexto(" Banco de Dados ", '—'));
-            Console.WriteLine($"{"Id",-3} | {"Nome",-15} | {"Categoria",-25} | {"Preco",6:C}");
-            Console.WriteLine(UI.CentralizarTexto("", '—'));
-            servicos.ListarTodos();
+            string[] options = { "Adicionar no Banco", "Alterar Produto", "Remover produto" };
+            var selected = UI.Select(options, servicos.ListarTodos());
 
-            Console.WriteLine($"""
-                {UI.CentralizarTexto("", '—')}
-                1 - Adicionar no Banco
-                2 - Alterar Produto
-                3 - Remover produto
-                4 - Sair
-                """);
-            Console.Write("Escolha: ");
-            switch (Console.ReadLine())
+            Console.Clear();
+            switch (selected)
             {
-                case "1": servicos.Adicionar(); break;
-                case "2": servicos.Alterar(); break;
-                case "3": servicos.Remover(); break;
-                case "4": return;
+                case 1: servicos.Adicionar(); break;
+                case 2: servicos.Alterar(); break;
+                case 3: servicos.Remover(); break;
+                case -1: Console.WriteLine("Obrigado por Testar :)"); return;
             }
 
-            Console.WriteLine("\nPressione qualquer tecla para continuar...");
-            Console.ReadKey();
         }
     }
 }

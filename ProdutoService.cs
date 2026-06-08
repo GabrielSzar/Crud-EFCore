@@ -49,7 +49,7 @@ class ProdutoService
     }
     public void Remover()
     {
-        Console.Write("Id do produto a alterar: ");
+        Console.Write("Id do produto a remover: ");
         var id = Convert.ToInt32(Console.ReadLine());
 
         var produto = _repo.BuscarId(id);
@@ -58,12 +58,12 @@ class ProdutoService
         Console.WriteLine($"Removendo: {produto.Id} - {produto.Nome}");
         _repo.Remover(produto);
     }
-    public void ListarTodos()
+    public List<string> ListarTodos()
     {
-        using var db = new AppDbContext();
-        var repo = new ProdutoRepository(db);
+        var list = new List<string>();
+        foreach (var p in _repo.MostrarProdutos())
+            list.Add($"{p.Id,-3} | {p.Nome,-15} | {p.Categoria,-25} | {p.Preco,6:C}");
 
-        foreach (var p in repo.MostrarProdutos())
-            Console.WriteLine($"{p.Id,-3} | {p.Nome,-15} | {p.Categoria,-25} | {p.Preco,6:C}");
+        return list;
     }
 }
